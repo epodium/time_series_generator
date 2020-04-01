@@ -2,6 +2,8 @@
 *.pdf
 __pycache__
 
+models_trained/
+
 # Spyder project settings
 .spyderproject
 .spyproject
