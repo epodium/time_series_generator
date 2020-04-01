@@ -10,7 +10,8 @@ import yaml
 
 def generate_dataset(TS_class_files,
                     instances_per_class,
-                    random_seed = None):
+                    random_seed = None,
+                    ignore_noise = False):
     """
     """
     if random_seed is not None:
@@ -31,7 +32,8 @@ def generate_dataset(TS_class_files,
         
         for j in range(instances_per_class):
             # Generate time series
-            X_data[(i*instances_per_class + j),:,:] = generate_TS(TS_def)
+            X_data[(i*instances_per_class + j),:,:] = generate_TS(
+                TS_def, ignore_noise = ignore_noise)
         
         # Get label
         if 'class_name' in TS_def:
@@ -52,7 +54,7 @@ def load_TS_class(filename,
     """
     
     with open(filename, 'r') as ymlfile:
-        TS_def = yaml.load(ymlfile)
+        TS_def = yaml.safe_load(ymlfile)
 
     if print_info:
         print(TS_def['class_name'])
