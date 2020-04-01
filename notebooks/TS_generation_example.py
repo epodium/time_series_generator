@@ -14,8 +14,8 @@ from matplotlib import pyplot as plt
 # In[2]:
 
 
-ROOT = ROOT = 'C:\\OneDrive - Netherlands eScience Center\\Project_ePodium\\time_series_generator'
-sys.path.insert(0, ROOT)
+ROOT = os.path.abspath(os.pardir)
+# sys.path.insert(0, ROOT)
 
 import TS_generator as TSgen
 
